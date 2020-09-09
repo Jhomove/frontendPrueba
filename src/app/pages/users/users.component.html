@@ -1,0 +1,47 @@
+<div class="container-fluid">
+    <div class="row flex justify-content-center mt-5">
+        <h2>Lista de usuarios</h2>
+    </div>
+    <div class="row flex justify-content-start">
+        <div class="col-10 offset-1">
+            <button class="btn btn-success" [routerLink]="['/crear-usuario']">
+                Crear usuario
+            </button>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-10 offset-1 mt-5">
+            <table class="table" *ngIf="users && users.length">
+                <thead class="thead-dark">
+                    <tr>
+                        <th scope="col">#id</th>
+                        <th scope="col">Nombre</th>
+                        <th scope="col">Appelidos</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">Teléfono</th>
+                        <th scope="col">Dirección</th>
+                        <th scope="col">Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let user of users; let i = index">
+                        <td>{{user.id}}</td>
+                        <td>{{user.name}}</td>
+                        <td>{{user.last_name}}</td>
+                        <td>{{user.email}}</td>
+                        <td>{{user.phone}}</td>
+                        <td>{{user.address}}</td>
+                        <td>
+                            <button class="btn btn-primary mr-2" [routerLink]="['/editar-usuario', user.id]">
+                                Editar
+                            </button>
+                            <button class="btn btn-danger" (click)="deleteUser(user.id, i)">
+                                Eliminar
+                            </button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

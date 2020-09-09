@@ -1,0 +1,39 @@
+<div class="container-fluid">
+    <div class="row mt-5">
+        <div class="col-6 offset-3">
+            <div *ngIf="getError('name')"><span class="alert alert-danger">El campo nombre es requerido</span></div>
+            <div *ngIf="getError('last_name')"><span class="alert alert-danger">El campo apellido es requerido</span></div>
+            <div *ngIf="getError('email')"><span class="alert alert-danger">El campo email es requerido</span></div>
+            <div *ngIf="getError('phone')"><span class="alert alert-danger">El campo teléfono es requerido</span></div>
+            <div *ngIf="getError('address')"><span class="alert alert-danger">El campo dirección es requerido</span></div>
+            <form class="mt-5" [formGroup]="formGroup">
+                <div class="form-group">
+                    <label for="name">Nombres:</label>
+                    <input type="text" class="form-control" id="name" formControlName="name" placeholder="Nombre">
+                </div>
+                <div class="form-group">
+                    <label for="last_name">Apellidos:</label>
+                    <input type="text" class="form-control" id="last_name" formControlName="last_name" placeholder="Apellidos">
+                </div>
+                <div class="form-group">
+                    <label for="email">Email:</label>
+                    <input type="email" class="form-control" id="email" formControlName="email" placeholder="Email">
+                </div>
+                <div class="form-group">
+                    <label for="phone">Teléfono:</label>
+                    <input type="text" class="form-control" id="phone" formControlName="phone" placeholder="Teléfono">
+                </div>
+                <div class="form-group">
+                    <label for="address">Dirección:</label>
+                    <input type="text" class="form-control" id="address" formControlName="address" placeholder="Dirección">
+                </div>
+                <div class="row justify-content-center">
+                    <button type="button" class="btn btn-primary mr-4" [ngClass]="{'disabled': formGroup.invalid}" (click)="register()">Registrar</button>
+                    <button class="btn btn-success" [routerLink]="['/usuarios']">
+                        Regresar
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
